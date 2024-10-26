@@ -1,0 +1,100 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Wheel and Button Styles */
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 4s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.segment {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    transform-origin: 100% 100%;
+    text-align: center;
+    line-height: 150%;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    background: #fff;
+    clip-path: polygon(100% 0, 0 0, 0 100%);
+}
+
+/* Input and Button Styles */
+.input-area {
+    margin-top: 20px;
+    width: 90%;
+}
+
+input[type="text"] {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    padding: 5px;
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.spin-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.spin-button:active {
+    background-color: #666;
+}
+
+/* Responsive Layout */
+@media (min-width: 600px) {
+    .wheel-container {
+        width: 400px;
+        height: 400px;
+    }
+    input[type="text"] {
+        font-size: 1.2rem;
+    }
+    .spin-button {
+        font-size: 1.4rem;
+    }
+}

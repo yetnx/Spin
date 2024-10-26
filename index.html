@@ -4,65 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Roulette</title>
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #000;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-        }
-        .wheel-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .input-area, .spin-button {
-            margin-top: 20px;
-            text-align: center;
-        }
-        input[type="text"] {
-            background: none;
-            border: none;
-            border-bottom: 1px solid #fff;
-            color: #fff;
-            padding: 5px;
-            text-align: center;
-            width: 80%;
-            font-size: 18px;
-        }
-        .spin-button {
-            background-color: #fff;
-            color: #000;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .spin-button:active {
-            background-color: #666;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wheel-container">
-        <!-- Wheel segments go here -->
+    <div class="container">
+        <div class="wheel-container" id="wheel">
+            <!-- Roulette wheel will be generated dynamically -->
+        </div>
+        <div class="input-area">
+            <input type="text" id="inputText" placeholder="Enter items separated by commas..." autocomplete="off">
+        </div>
+        <button class="spin-button" onclick="spinWheel()">Spin</button>
     </div>
-    <div class="input-area">
-        <input type="text" placeholder="Enter text...">
-    </div>
-    <div>
-        <button class="spin-button">Spin</button>
-    </div>
+    <script src="script.js"></script>
 </body>
 </html>
