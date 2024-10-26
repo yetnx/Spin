@@ -1,18 +1,16 @@
-const wheel = document.getElementById("wheelSegments");
+const wheel = document.getElementById("wheel");
 const inputText = document.getElementById("inputText");
+const resultMessage = document.getElementById("result");
 let isSpinning = false;
 
 function createWheel(items) {
-    // Clear any existing segments
-    wheel.innerHTML = "";
-    
-    // Calculate the angle for each segment
-    const angle = 360 / items.length;
-    
+    wheel.innerHTML = ""; // Clear the wheel for new segments
+
+    const anglePerSegment = 360 / items.length; // Angle for each segment
     items.forEach((item, index) => {
         const segment = document.createElement("div");
         segment.classList.add("segment");
-        segment.style.transform = `rotate(${index * angle}deg) skewY(${90 - angle}deg)`;
+        segment.style.transform = `rotate(${index * anglePerSegment}deg) skewY(${90 - anglePerSegment}deg)`;
         segment.textContent = item;
         wheel.appendChild(segment);
     });
@@ -21,31 +19,26 @@ function createWheel(items) {
 function spinWheel() {
     if (isSpinning) return;
 
-    // Get items from input, split by commas, and trim whitespace
     const items = inputText.value.split(",").map(item => item.trim()).filter(item => item);
     
     if (items.length < 2) {
         alert("Please enter at least two items.");
         return;
     }
-    
+
     createWheel(items);
     isSpinning = true;
-    
-    // Random spin calculation for at least 5 full rotations
+    resultMessage.textContent = "";
+
     const randomRotation = Math.floor(Math.random() * 360) + 1800;
-    wheel.style.transition = "transform 4s ease-out";
     wheel.style.transform = `rotate(${randomRotation}deg)`;
-    
-    // Determine the selected item after the spin
+
     setTimeout(() => {
         isSpinning = false;
         
-        // Calculate selected segment index based on rotation
         const selectedIndex = Math.floor(((randomRotation % 360) / 360) * items.length);
-        alert(`Selected: ${items[selectedIndex]}`);
+        resultMessage.textContent = `Selected: ${items[selectedIndex]}`;
         
-        // Reset wheel rotation to 0 for next spin
         wheel.style.transition = "none";
         wheel.style.transform = "rotate(0deg)";
     }, 4000);

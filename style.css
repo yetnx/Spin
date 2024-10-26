@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #000;
+    background-color: #111;
     color: #fff;
     font-family: 'Roboto', sans-serif;
 }
@@ -20,81 +20,100 @@ body {
     align-items: center;
 }
 
-/* Wheel and Button Styles */
+.title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Wheel Styles */
 .wheel-container {
     position: relative;
     width: 300px;
     height: 300px;
-    border-radius: 50%;
-    overflow: hidden;
     margin-top: 20px;
 }
 .wheel {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    transition: transform 4s ease-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
+    position: relative;
+    transform: rotate(0deg);
+    transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
 .segment {
     position: absolute;
     width: 50%;
     height: 50%;
-    transform-origin: 100% 100%;
-    text-align: center;
-    line-height: 150%;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 100%;
+    text-align: right;
+    padding-right: 5px;
     color: #000;
-    font-size: 1rem;
-    font-weight: bold;
     background: #fff;
-    clip-path: polygon(100% 0, 0 0, 0 100%);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+.segment:nth-child(even) {
+    background: #eee;
+}
+
+/* Wheel Pointer */
+.wheel-pointer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #ffcc00;
+    transform: translate(-50%, -150%);
+    z-index: 10;
 }
 
 /* Input and Button Styles */
 .input-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
-    width: 90%;
+    width: 80%;
 }
 
 input[type="text"] {
-    background: none;
-    border: none;
-    border-bottom: 1px solid #fff;
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
     color: #fff;
-    padding: 5px;
+    padding: 10px;
     width: 100%;
     font-size: 1rem;
     text-align: center;
 }
 
 .spin-button {
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 10px 20px;
     border: none;
-    border-radius: 50%;
-    background-color: #fff;
-    color: #000;
+    border-radius: 5px;
+    background-color: #ffcc00;
+    color: #111;
     cursor: pointer;
     font-size: 1.2rem;
     font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .spin-button:active {
-    background-color: #666;
+    background-color: #ffaa00;
 }
 
-/* Responsive Layout */
-@media (min-width: 600px) {
-    .wheel-container {
-        width: 400px;
-        height: 400px;
-    }
-    input[type="text"] {
-        font-size: 1.2rem;
-    }
-    .spin-button {
-        font-size: 1.4rem;
-    }
+/* Result Message */
+.result-message {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #ffcc00;
 }
